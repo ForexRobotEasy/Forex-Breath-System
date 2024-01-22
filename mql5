@@ -1,0 +1,72 @@
+mql5
+//+------------------------------------------------------------------+
+//|                        Forex Breath System                       |
+//|              Developer's Site: forexroboteasy.com                |
+//|                  Development by: Forex Robot Easy Team           |
+//+------------------------------------------------------------------+
+
+//---- Include necessary libraries ----
+#include <Trade\Trade.mqh>
+
+//---- Define variables ----
+input ENUM_TIMEFRAMES TimeFrame = PERIOD_H1; // Default time frame
+input double StopLoss = 50.0; // Stop loss in points
+input double TakeProfit = 100.0; // Take profit in points
+
+//+------------------------------------------------------------------+
+//|                       Expert initialization                      |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set up the indicator and expert advisor properties
+    IndicatorSetString(INDICATOR_SHORTNAME, 'Forex Breath System');
+    IndicatorSetString(INDICATOR_AUTHOR, 'Forex Robot Easy Team');
+    SetProfitTarget(TakeProfit);
+    SetStopLoss(StopLoss);
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                   Expert advisor start function                  |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Define trading logic here
+    
+    // Example: Buy when the trend is up
+    if (IsTrendUp())
+    {
+        OpenBuyOrder();
+    }
+    
+    // Example: Sell when the trend is down
+    if (IsTrendDown())
+    {
+        OpenSellOrder();
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                        Custom functions                          |
+//+------------------------------------------------------------------+
+bool IsTrendUp()
+{
+    // Add code to identify an uptrend
+    // Return true if the trend is up, false otherwise
+}
+
+bool IsTrendDown()
+{
+    // Add code to identify a downtrend
+    // Return true if the trend is down, false otherwise
+}
+
+void OpenBuyOrder()
+{
+    // Add code to open a buy order
+}
+
+void OpenSellOrder()
+{
+    // Add code to open a sell order
+}
